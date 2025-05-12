@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Chinmai!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="hearts"></div>
+    <div class="card">
+        <div class="card-front">
+            <div class="bollywood-title">❤️ Happy Birthday Chinmai ❤️</div>
+            <div class="photo-frame">
+                <img src="chinmai_photo.jpg" alt="Beautiful Chinmai" class="birthday-photo">
+            </div>
+            <div class="dialogue">"Tum mere dil ki rani ho,<br>Mere khwabon ki mallika ho!"</div>
+            <p class="tap-message">Click for your special message ❤️</p>
+        </div>
+        
+        <div class="card-inside">
+            <div class="message">
+                <h2>My Dearest Chinmai,</h2>
+                <div class="romantic-dialogues">
+                    <p>"Aaj tumhare janamdin par,<br>Dil se yeh kehna chahta hoon...</p>
+                    <p>Tumhare bina jeena adhura hai,<br>Tumhare saath har pal suhana hai!"</p>
+                    <p>Tumhari muskurahat mere liye sabse khoobsurat hai,<br>Tumhari khushi hi meri khushi hai!"</p>
+                </div>
+                <div class="signature">
+                    <p>Forever yours,</p>
+                    <p class="name">Ayush</p>
+                    <div class="lip-print">💋</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="birthdaySong" loop>
+        <source src="happy-birthday.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const card = document.querySelector('.card');
+        const song = document.getElementById('birthdaySong');
+        
+        card.addEventListener('click', function() {
+            this.classList.toggle('open');
+            if (this.classList.contains('open')) {
+                song.play().catch(e => console.log("Auto-play prevented"));
+            } else {
+                song.pause();
+                song.currentTime = 0;
+            }
+        });
+
+        // Create floating hearts
+        for (let i = 0; i < 20; i++) {
+            createHeart();
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.querySelector('.hearts').appendChild(heart);
+        }
+    </script>
+</body>
+</html>
